@@ -59,6 +59,7 @@ a {
   margin-top: 1rem;
 }
 
+/* ====== Contact Item ====== */
 .contactItem {
   display: flex;
   align-items: center;
@@ -80,7 +81,7 @@ a {
 }
 
 .contactText {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   word-break: break-all;
 }
 
@@ -253,4 +254,90 @@ a {
 .sectionContent ul li a:hover {
   color: #003c9e;
   text-decoration: underline;
+}
+
+/* ====== Maps & Contact Card ====== */
+.mapCard {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mapCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.contactHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #3498db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.contactIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.contactIcon:hover {
+  background-color: #1d6ed9;
+}
+
+.contactText {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ====== Harta ====== */
+#map {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  border: 2px solid #3498db;
+  transition: box-shadow 0.2s;
+}
+
+#map:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* ====== Responsive Maps & Contact ====== */
+@media (max-width: 850px) {
+  .mapCard {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .contactHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .contactIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  #map {
+    height: 200px;
+  }
 }

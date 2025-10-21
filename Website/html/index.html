@@ -14,23 +14,60 @@
     <div class="mainContainer">
       <div class="innerContainer">
         <h1>UNITBV Students</h1>
-        <div class="cardsContainer">
-          <a href="veaceslav.html" class="card">
-            <img class="cardImg" src="../img/1.jpg" alt="Primul student" />
-            <h3 class="cardTitle">Bobeica Veaceslav</h3>
-          </a>
+        <div class="sliderContainer">
+          <button class="arrow arrow-left">&#8592;</button>
+          <div class="cardsContainer">
+            <a href="veaceslav.html" class="card active">
+              <img
+                class="cardImg"
+                src="../img/veaceslav.jpg"
+                alt="Primul student"
+              />
+              <h3 class="cardTitle">Bobeica Veaceslav</h3>
+            </a>
 
-          <a href="" class="card">
-            <img class="cardImg" src="../img/2.jpg" alt="Al doilea student" />
-            <h3 class="cardTitle">Atitienei Eliza</h3>
-          </a>
+            <a href="" class="card">
+              <img class="cardImg" src="../img/2.jpg" alt="Al doilea student" />
+              <h3 class="cardTitle">Atitienei Eliza</h3>
+            </a>
 
-          <a href="" class="card">
-            <img class="cardImg" src="../img/3.jpg" alt="Al treilea student" />
-            <h3 class="cardTitle">Andrieș Bogdan</h3>
-          </a>
+            <a href="" class="card">
+              <img
+                class="cardImg"
+                src="../img/3.jpg"
+                alt="Al treilea student"
+              />
+              <h3 class="cardTitle">Andrieș Bogdan</h3>
+            </a>
+          </div>
+          <button class="arrow arrow-right">&#8594;</button>
         </div>
       </div>
     </div>
+
+    <script src="../scripts/slider.js"></script>
   </body>
 </html>
+
+<script>
+  const cards = document.querySelectorAll(".card");
+  const prevBtn = document.querySelector(".arrow-left");
+  const nextBtn = document.querySelector(".arrow-right");
+  let current = 0;
+
+  function showCard(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle("active", i === index);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    current = (current - 1 + cards.length) % cards.length;
+    showCard(current);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    current = (current + 1) % cards.length;
+    showCard(current);
+  });
+</script>

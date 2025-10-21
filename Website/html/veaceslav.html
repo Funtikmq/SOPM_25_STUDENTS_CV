@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/veaceslav.css" />
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoNA30iRkNZbOD78b1Gsft7b0BRS9xK_4&callback=initMap"
+      async
+      defer
+    ></script>
     <title>Veaceslav</title>
   </head>
   <body>
     <div class="mainContainer">
       <div class="leftContainer">
         <div class="photoContainer">
-          <img class="photo" src="../img/1.jpg" alt="" />
+          <img class="photo" src="../img/veaceslav.jpg" alt="" />
         </div>
         <div class="contactContainer">
           <div class="contactItem">
@@ -45,6 +50,28 @@
               </svg>
             </div>
             <div class="contactText">veaceslav.bobeica.02@gmail.com</div>
+          </div>
+          <div class="contactItem mapCard">
+            <div class="contactHeader">
+              <div class="contactIcon">
+                <svg
+                  width="40"
+                  height="40"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M256 64L32 176.295l32 21.072V400l32 16V217.849L255.852 320l132.144-85.451L480 174.727z"
+                    fill="#fff"
+                  />
+                  <path
+                    d="M390.13 256L256 343.768 120.531 256 112 337.529C128 349.984 224 416 256.002 448 288 416 384 350.031 400 337.561L390.13 256z"
+                    fill="#fff"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div id="map"></div>
           </div>
         </div>
       </div>
@@ -202,6 +229,27 @@
           btn.classList.toggle("active");
         });
       });
+
+      window.initMap = function () {
+        const address = "Universitatea Transilvania, Brașov";
+        const geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({ address: address }, (results, status) => {
+          if (status === "OK") {
+            const map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 16,
+              center: results[0].geometry.location,
+            });
+
+            new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+            });
+          } else {
+            console.error("Geocode nu a reușit din cauza: " + status);
+          }
+        });
+      };
     </script>
   </body>
 </html>
