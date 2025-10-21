@@ -1,0 +1,256 @@
+/* ====== Reset & Base ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* ====== Layout ====== */
+.mainContainer {
+  display: flex;
+  max-width: 1100px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ====== Left Section ====== */
+.leftContainer {
+  background: linear-gradient(180deg, #0052d4, #4364f7, #6fb1fc);
+  color: #fff;
+  width: 32%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photoContainer {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contactContainer {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  transition: background 0.2s;
+  margin-bottom: 0.5rem;
+}
+
+.contactItem:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contactIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contactText {
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+/* ====== Right Section ====== */
+.rightContainer {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.studentName {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e9f0;
+  padding-bottom: 0.5rem;
+}
+
+.dataTitle {
+  font-size: 1.1rem;
+  color: #0052d4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.repoTitle {
+  font-size: 1rem;
+  color: #1a1a1a;
+  margin-top: 2rem;
+}
+
+.repoLink {
+  font-size: 0.95rem;
+  color: #0052d4;
+  word-break: break-all;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.repoLink:hover {
+  color: #003c9e;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 850px) {
+  .mainContainer {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .leftContainer {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1.5rem;
+  }
+
+  .rightContainer {
+    padding: 2rem;
+  }
+
+  .photoContainer {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ====== Toggle Sections ====== */
+.section {
+  margin-top: 1rem;
+  border: 1px solid #e0e4eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fafbfc;
+  transition: all 0.3s ease;
+}
+
+.toggleBtn {
+  width: 100%;
+  text-align: left;
+  background: linear-gradient(90deg, #0052d4, #4364f7);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggleBtn::after {
+  content: "▼";
+  transition: transform 0.3s;
+}
+
+.toggleBtn.active::after {
+  transform: rotate(180deg);
+}
+
+.toggleBtn:hover {
+  background: linear-gradient(90deg, #003c9e, #5b7efb);
+}
+
+.sectionContent {
+  display: none;
+  padding: 1rem 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.sectionContent.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Styled Lists ====== */
+.sectionContent ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionContent ul li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 0.5rem;
+  transition: background 0.2s;
+}
+
+.sectionContent ul li:hover {
+  background: rgba(0, 82, 212, 0.05);
+  border-radius: 6px;
+  padding-left: 0.75rem;
+}
+
+.sectionContent ul li b,
+.sectionContent ul li h4 {
+  color: #0052d4;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.sectionContent ul li p {
+  margin-left: 0.2rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.sectionContent ul li a {
+  color: #4364f7;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.sectionContent ul li a:hover {
+  color: #003c9e;
+  text-decoration: underline;
+}
