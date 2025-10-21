@@ -1,97 +1,10 @@
- <!doctype html>
+<!doctype html>
 <html lang="ro">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bogdan Andries — CV</title>
   <link rel="stylesheet" href="../styles/bogdan.css" />
-
-  <style>
-    body {
-      background: linear-gradient(135deg, #e0ecff, #f7faff);
-    }
-    .header {
-      background: linear-gradient(90deg, #0b2545, #3366cc);
-      color: white;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
-    }
-    .name {
-      color: #fff;
-    }
-    .role {
-      color: #dce6ff;
-    }
-
-    .contact {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-    }
-    .contact-item {
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 14px;
-      transition: background 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .contact-item:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .icon {
-      font-weight: bold;
-      opacity: 0.9;
-    }
-
-    .card {
-      border-left: 5px solid #3366cc;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
-      opacity: 0;
-    }
-    .card.open .card-content {
-      max-height: 500px;
-      opacity: 1;
-    }
-
-    h2 {
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #0b2545;
-    }
-    h2::after {
-      content: "▼";
-      font-size: 14px;
-      transition: transform 0.3s ease;
-      color: #3366cc;
-    }
-    .card.open h2::after {
-      transform: rotate(180deg);
-    }
-
-    @media (max-width: 900px) {
-      .contact {
-        align-items: center;
-      }
-    }
-  </style>
 </head>
 <body>
   <main class="container">
@@ -106,7 +19,8 @@
       <div class="contact">
         <div class="contact-item"><span class="icon">✉️</span> andries.bogdan2003@gmail.com</div>
         <div class="contact-item"><span class="icon">📞</span> 0771559368</div>
-        <div class="contact-item"><span class="icon">📍</span> Strada Oborului Nr 2, Bloc AC2 Scara 2</div>
+        <div class="contact-item"><span class="icon">🛣️</span> Strada Oborului Nr 2, Bloc AC2 Scara 2
+          (<a href="https://www.google.com/maps" target="_blank" class="github-link">🗺️</a>)</div>
       </div>
     </header>
 
@@ -151,7 +65,9 @@
           <h2>Proiecte</h2>
           <div class="card-content">
             <ul class="list">
-              <li>Joc 2048 — realizat în C#</li>
+              <li>Joc 2048 — realizat în C#
+                (<a href="https://github.com/Bogdan4350/Proiect-PCPL1-2048" target="_blank" class="github-link">GitHub</a>)
+              </li>
               <li>Ventilator reglabil cu Arduino</li>
               <li>Panou Clima Auto — limbaj de asamblare</li>
             </ul>
@@ -171,6 +87,10 @@
           <h2>Educație</h2>
           <div class="card-content">
             <div class="edu">
+              <p class="year">2022 — 2025</p>
+              <p><strong>Universitatea Transilvania</strong>, Brașov</p>
+            </div>
+            <div class="edu">
               <p class="year">2018 — 2022</p>
               <p><strong>Liceul Teoretic „Nicolae Iorga”</strong>, Brăila</p>
             </div>
@@ -182,6 +102,11 @@
           <div class="card-content">
             <p>Pentru detalii, portofoliu sau cod sursă, trimite-mi un e-mail sau un SMS.</p>
           </div>
+        </section>
+
+        <section class="card mapCard">
+          <h2>Locație Universitate</h2>
+          <div class="card-content" id="map"></div>
         </section>
       </section>
     </section>
@@ -197,6 +122,29 @@
         });
       });
     });
+
+    window.initMap = function () {
+      const address = "Universitatea Transilvania, Brașov";
+      const geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 16,
+            center: results[0].geometry.location,
+          });
+
+          new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+          });
+        } else {
+          console.error("Geocode nu a reușit din cauza: " + status);
+        }
+      });
+    };
   </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoNA30iRkNZbOD78b1Gsft7b0BRS9xK_4&callback=initMap" async defer></script>
 </body>
 </html>
