@@ -6,7 +6,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #c3a5ff 0%, #e7e3fd 100%);
+  background: linear-gradient(135deg, #282ea8 0%, #e7e3fd 100%);
   color: #222;
   min-height: 100vh;
   display: flex;
@@ -31,6 +31,9 @@ a {
 .innerContainer {
   width: 100%;
   max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -40,14 +43,29 @@ h1 {
   margin-bottom: 3rem;
 }
 
+/* Slider container */
+.sliderContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .cardsContainer {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  width: 100%;
+  overflow: visible; /* Schimbat din hidden în visible */
   gap: 2rem;
+  padding: 1rem;
 }
 
+/* Ascundem toate cardurile implicit */
 .card {
+  display: none;
   width: 280px;
   height: 340px;
   background: rgba(255, 255, 255, 0.25);
@@ -59,13 +77,21 @@ h1 {
   transition: all 0.3s ease;
   text-decoration: none;
   color: inherit;
+  flex-direction: column;
+  flex-shrink: 0; /* Previne comprimarea cardurilor */
+}
+
+/* Card activ vizibil */
+.card.active {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10; /* Asigură că cardul transformat este deasupra */
 }
 
 .cardImg {
@@ -93,4 +119,69 @@ h1 {
   letter-spacing: 0.5px;
   color: #0a2540;
   text-transform: capitalize;
+}
+
+/* Arrows - poziționare îmbunătățită */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 20; /* Asigură că butoanele sunt deasupra */
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow-left {
+  left: -70px; /* Mutat mai în afara containerului */
+}
+
+.arrow-right {
+  right: -70px; /* Mutat mai în afara containerului */
+}
+
+/* Pentru ecrane mai mici */
+@media (max-width: 768px) {
+  .sliderContainer {
+    max-width: 100%;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .arrow-left {
+    left: -50px;
+  }
+
+  .arrow-right {
+    right: -50px;
+  }
+
+  .card {
+    width: 250px;
+    height: 320px;
+  }
+
+  .cardImg {
+    width: 220px;
+    height: 220px;
+  }
 }
