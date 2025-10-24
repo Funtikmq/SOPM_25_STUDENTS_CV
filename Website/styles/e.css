@@ -115,6 +115,7 @@ body{
   font-size: 1.2rem;
   margin-top: 1rem;
   color: #DFD0B8;
+  cursor: pointer;
 }
 
 .download_button:hover{
@@ -265,3 +266,15 @@ hr{
     height: 200px;
   }
 }
+
+.link{
+  color: #948979;
+  text-decoration: underline;
+}
+
+.link:hover {
+ color: #91C4C3;
+}
+
+
+
