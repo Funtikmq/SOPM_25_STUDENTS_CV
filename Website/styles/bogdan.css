@@ -106,6 +106,108 @@ h2::after {
 #map:hover {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
+.list li:hover {
+  background: #e8f2ff;
+  padding-left: 10px;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.contact-item:hover {
+  color: #3366cc;
+  transform: translateX(4px);
+  transition: 0.2s ease;
+}
+
+.link, .github-link {
+  color: #1a4fb3;
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  transition: 0.2s;
+}
+
+.link:hover, .github-link:hover {
+  border-bottom-color: #1a4fb3;
+  padding-left: 4px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  transition: 0.25s ease;
+}
+
+.contact-item .icon {
+  font-size: 18px;
+  transition: transform 0.25s ease;
+}
+
+.contact-item:hover {
+  background: #e8f2ff;
+  padding-left: 8px;
+  border-radius: 6px;
+}
+
+.contact-item:hover .icon {
+  transform: scale(1.2) rotate(8deg);
+}
+.theme-btn {
+  background: #e8f2ff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.25s;
+  margin-top: 10px;
+}
+
+.theme-btn:hover {
+  background: #cfe1ff;
+  transform: translateY(-2px);
+}
+
+/* DARK MODE using .dark class on body */
+
+body.dark {
+  background: #0f1320;
+  color: #e4e8f1;
+}
+
+body.dark .header,
+body.dark .card {
+  background: #181d2f;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+body.dark h2,
+body.dark .name {
+  color: #4da8ff;
+}
+
+body.dark .list li {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+body.dark .list li:hover {
+  background: #1d2538;
+}
+
+body.dark .contact-item:hover {
+  background: #1a2233;
+}
+
+body.dark .link,
+body.dark .github-link {
+  color: #4da8ff;
+}
+
+body.dark #map {
+  border-color: #4da8ff;
+}
 
 @media (max-width: 900px) {
   .two-col { grid-template-columns: 1fr; }
