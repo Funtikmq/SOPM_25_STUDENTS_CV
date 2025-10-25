@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  touch-action: pan-y; /* Permite scroll vertical dar previne zoom */
 }
 
 a {
@@ -47,6 +48,7 @@ h1 {
 .sliderContainer {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -56,16 +58,22 @@ h1 {
 
 .cardsContainer {
   display: flex;
-  justify-content: center;
   width: 100%;
-  overflow: visible; /* Schimbat din hidden în visible */
+  overflow: hidden; /* Ascunde cardurile în afara viewport-ului */
   gap: 2rem;
   padding: 1rem;
+  scroll-behavior: smooth;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch; /* Scroll smooth pe iOS */
 }
 
-/* Ascundem toate cardurile implicit */
+.cardsContainer:active {
+  cursor: grabbing;
+}
+
+/* Toate cardurile sunt vizibile și se aliniază orizontal */
 .card {
-  display: none;
+  flex: 0 0 280px;
   width: 280px;
   height: 340px;
   background: rgba(255, 255, 255, 0.25);
@@ -77,21 +85,16 @@ h1 {
   transition: all 0.3s ease;
   text-decoration: none;
   color: inherit;
-  flex-direction: column;
-  flex-shrink: 0; /* Previne comprimarea cardurilor */
-}
-
-/* Card activ vizibil */
-.card.active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  scroll-snap-align: start; /* Aliniere la început pentru snap */
 }
 
 .card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  z-index: 10; /* Asigură că cardul transformat este deasupra */
+  z-index: 10;
 }
 
 .cardImg {
@@ -121,38 +124,30 @@ h1 {
   text-transform: capitalize;
 }
 
-/* Arrows - poziționare îmbunătățită */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 30px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+/* Indicator dots */
+.sliderDots {
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 20; /* Asigură că butoanele sunt deasupra */
 }
 
-.arrow:hover {
-  background: rgba(0, 0, 0, 0.7);
-  transform: translateY(-50%) scale(1.1);
+.dot.active {
+  background: #003c6e;
+  transform: scale(1.2);
 }
 
-.arrow-left {
-  left: -70px; /* Mutat mai în afara containerului */
-}
-
-.arrow-right {
-  right: -70px; /* Mutat mai în afara containerului */
+.dot:hover {
+  background: rgba(0, 60, 110, 0.7);
 }
 
 /* Pentru ecrane mai mici */
@@ -161,21 +156,13 @@ h1 {
     max-width: 100%;
   }
 
-  .arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-  }
-
-  .arrow-left {
-    left: -50px;
-  }
-
-  .arrow-right {
-    right: -50px;
+  .cardsContainer {
+    gap: 1.5rem;
+    padding: 0.5rem;
   }
 
   .card {
+    flex: 0 0 250px;
     width: 250px;
     height: 320px;
   }
@@ -183,5 +170,28 @@ h1 {
   .cardImg {
     width: 220px;
     height: 220px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Pentru dispozitive foarte mici */
+@media (max-width: 480px) {
+  .card {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 300px;
+  }
+
+  .cardImg {
+    width: 190px;
+    height: 190px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
   }
 }

@@ -15,7 +15,6 @@
       <div class="innerContainer">
         <h1>UNITBV Students</h1>
         <div class="sliderContainer">
-          <button class="arrow arrow-left">&#8592;</button>
           <div class="cardsContainer">
             <a href="veaceslav.html" class="card active">
               <img
@@ -31,16 +30,17 @@
               <h3 class="cardTitle">Atitienei Eliza</h3>
             </a>
 
-            <a href="bogdan.html" class="card">
+            <a href="" class="card">
               <img
                 class="cardImg"
-                src="../img/f1.jpg"
+                src="../img/3.jpg"
                 alt="Al treilea student"
               />
               <h3 class="cardTitle">Andrieș Bogdan</h3>
             </a>
           </div>
-          <button class="arrow arrow-right">&#8594;</button>
+          <!-- Indicator dots -->
+          <div class="sliderDots"></div>
         </div>
       </div>
     </div>
@@ -50,24 +50,108 @@
 </html>
 
 <script>
+  const cardsContainer = document.querySelector(".cardsContainer");
   const cards = document.querySelectorAll(".card");
-  const prevBtn = document.querySelector(".arrow-left");
-  const nextBtn = document.querySelector(".arrow-right");
-  let current = 0;
+  const dotsContainer = document.querySelector(".sliderDots");
+  let currentIndex = 0;
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
 
-  function showCard(index) {
-    cards.forEach((card, i) => {
-      card.classList.toggle("active", i === index);
+  // Crează dots indicators
+  cards.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.className = `dot ${index === 0 ? "active" : ""}`;
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function goToSlide(index) {
+    currentIndex = index;
+    const cardWidth = cards[0].offsetWidth + 32; // width + gap
+    cardsContainer.scrollLeft = cardWidth * index;
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
     });
   }
 
-  prevBtn.addEventListener("click", () => {
-    current = (current - 1 + cards.length) % cards.length;
-    showCard(current);
+  // Evenimente pentru mouse
+  cardsContainer.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.pageX - cardsContainer.offsetLeft;
+    cardsContainer.style.cursor = "grabbing";
+    cardsContainer.style.scrollBehavior = "auto";
   });
 
-  nextBtn.addEventListener("click", () => {
-    current = (current + 1) % cards.length;
-    showCard(current);
+  cardsContainer.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    currentX = e.pageX - cardsContainer.offsetLeft;
+  });
+
+  cardsContainer.addEventListener("mouseup", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    cardsContainer.style.cursor = "grab";
+    cardsContainer.style.scrollBehavior = "smooth";
+
+    const cardWidth = cards[0].offsetWidth + 32;
+    const dragDistance = startX - currentX;
+
+    // Schimbă slide-ul doar dacă s-a făcut o glisare semnificativă
+    if (Math.abs(dragDistance) > 50) {
+      if (dragDistance > 0 && currentIndex < cards.length - 1) {
+        currentIndex++;
+      } else if (dragDistance < 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+      goToSlide(currentIndex);
+    }
+  });
+
+  cardsContainer.addEventListener("mouseleave", () => {
+    isDragging = false;
+    cardsContainer.style.cursor = "grab";
+  });
+
+  // Evenimente pentru touch
+  cardsContainer.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - cardsContainer.offsetLeft;
+    cardsContainer.style.scrollBehavior = "auto";
+  });
+
+  cardsContainer.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].pageX - cardsContainer.offsetLeft;
+  });
+
+  cardsContainer.addEventListener("touchend", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    cardsContainer.style.scrollBehavior = "smooth";
+
+    const cardWidth = cards[0].offsetWidth + 32;
+    const dragDistance = startX - currentX;
+
+    if (Math.abs(dragDistance) > 50) {
+      if (dragDistance > 0 && currentIndex < cards.length - 1) {
+        currentIndex++;
+      } else if (dragDistance < 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+      goToSlide(currentIndex);
+    }
+  });
+
+  // Auto-scroll la primul card la încărcare
+  window.addEventListener("load", () => {
+    goToSlide(0);
   });
 </script>
