@@ -1,159 +1,75 @@
- <!doctype html>
+<!doctype html>
 <html lang="ro">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bogdan Andries — CV</title>
   <link rel="stylesheet" href="../styles/bogdan.css" />
-
-  <style>
-    body {
-      background: linear-gradient(135deg, #e0ecff, #f7faff);
-    }
-    .header {
-      background: linear-gradient(90deg, #0b2545, #3366cc);
-      color: white;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
-    }
-    .name {
-      color: #fff;
-    }
-    .role {
-      color: #dce6ff;
-    }
-
-    .contact {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-    }
-    .contact-item {
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 14px;
-      transition: background 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .contact-item:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .icon {
-      font-weight: bold;
-      opacity: 0.9;
-    }
-
-    .card {
-      border-left: 5px solid #3366cc;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
-      opacity: 0;
-    }
-    .card.open .card-content {
-      max-height: 500px;
-      opacity: 1;
-    }
-
-    h2 {
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #0b2545;
-    }
-    h2::after {
-      content: "▼";
-      font-size: 14px;
-      transition: transform 0.3s ease;
-      color: #3366cc;
-    }
-    .card.open h2::after {
-      transform: rotate(180deg);
-    }
-
-    @media (max-width: 900px) {
-      .contact {
-        align-items: center;
-      }
-    }
-  </style>
 </head>
 <body>
+  <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
   <main class="container">
     <header class="header">
       <div class="profile-pic">
-        <img src="../img/f1.jpg" alt="Fotografie profil Bogdan Andries" />
+        <img src="../img/f1.jpg" alt="Profile Photo Bogdan Andries" />
       </div>
       <div class="header-info">
         <h1 class="name">Bogdan<br/>Andries</h1>
         <p class="role">Student</p>
       </div>
       <div class="contact">
-        <div class="contact-item"><span class="icon">✉️</span> andries.bogdan2003@gmail.com</div>
-        <div class="contact-item"><span class="icon">📞</span> 0771559368</div>
-        <div class="contact-item"><span class="icon">📍</span> Strada Oborului Nr 2, Bloc AC2 Scara 2</div>
+        <div class="contact-item"><span class="icon">✉️</span>Email: andries.bogdan2003@gmail.com</div>
+        <div class="contact-item"><span class="icon">📞</span>Phone Number: +40771559368</div>
+        <div class="contact-item"><span class="icon">🛣️</span>Address: Flat 22 Staircase 2, Block AC2, 2 Oborului Street,810495 Braila, Romania</div>
       </div>
     </header>
 
     <section class="two-col">
       <aside class="left">
         <section class="card personal">
-          <h2>Date personale</h2>
+          <h2>Personal Details</h2>
           <div class="card-content">
             <ul class="list">
-              <li><strong>Nume:</strong> Andries Bogdan</li>
-              <li><strong>Data nașterii:</strong> 26.06.2003</li>
-              <li><strong>Naționalitate:</strong> Română</li>
-              <li><strong>Gen:</strong> Masculin</li>
+              <li><strong>Name:</strong> Andries Bogdan</li>
+              <li><strong>Data of birth:</strong> 26.06.2003</li>
+              <li><strong>Nationality:</strong> Română</li>
+              <li><strong>Gender:</strong> Masculin</li>
             </ul>
           </div>
         </section>
 
         <section class="card">
-          <h2>Limbi</h2>
+          <h2>Languages</h2>
           <div class="card-content">
             <ul class="list">
-              <li><strong>Română</strong> — Vorbitor nativ</li>
-              <li><strong>Engleză</strong> — C2</li>
+              <li><strong>Romanian</strong> — Native Speaker</li>
+              <li><strong>English</strong> — C2 (<a href="../pdf/Cambridge-Bogdan_Andries.pdf" target="_blank" class="link">Cambridge Assesment</a>)</li>
             </ul>
           </div>
         </section>
 
         <section class="card">
-          <h2>Abilități</h2>
+          <h2>Skills</h2>
           <div class="card-content">
             <ul class="list">
-              <li>Programare în C++</li>
-              <li>Programare în C#</li>
+              <li>C++ Programming</li>
+              <li>C# Programming</li>
               <li>Microsoft Office</li>
-              <li>Lucru cu Arduino</li>
-              <li>Asamblare 8086</li>
+              <li>Arduino Projects</li>
+              <li>8086 Assembly Programming</li>
             </ul>
           </div>
         </section>
 
         <section class="card">
-          <h2>Proiecte</h2>
+          <h2>Projects</h2>
           <div class="card-content">
             <ul class="list">
-              <li>Joc 2048 — realizat în C#</li>
-              <li>Ventilator reglabil cu Arduino</li>
-              <li>Panou Clima Auto — limbaj de asamblare</li>
+              <li>2048 Game in C#
+                (<a href="https://github.com/Bogdan4350/Proiect-PCPL1-2048" target="_blank" class="github-link">GitHub</a>)
+              </li>
+              <li>Adjustable Fan — Arduino</li>
+              <li>Car Climate Control Panel — Assembly</li>
             </ul>
           </div>
         </section>
@@ -161,18 +77,22 @@
 
       <section class="right">
         <section class="card">
-          <h2>Experiențe</h2>
+          <h2>Experience</h2>
           <div class="card-content">
-            <p>Proiecte personale și lucrări din cadrul studiilor — detalii disponibile la cerere.</p>
+            <p>Academic and personal projects. Details available on request.</p>
           </div>
         </section>
 
         <section class="card">
-          <h2>Educație</h2>
+          <h2>Education</h2>
           <div class="card-content">
             <div class="edu">
+              <p class="year">2022 — 2025</p>
+              <p><strong>Transilvania University</strong>, Brașov</p>
+            </div>
+            <div class="edu">
               <p class="year">2018 — 2022</p>
-              <p><strong>Liceul Teoretic „Nicolae Iorga”</strong>, Brăila</p>
+              <p><strong>Nicolae Iorga High School</strong>, Brăila</p>
             </div>
           </div>
         </section>
@@ -180,8 +100,13 @@
         <section class="card">
           <h2>Contact & Info</h2>
           <div class="card-content">
-            <p>Pentru detalii, portofoliu sau cod sursă, trimite-mi un e-mail sau un SMS.</p>
+            <p>For portfolio or source code please send me an email or message.</p>
           </div>
+        </section>
+
+        <section class="card mapCard">
+          <h2>University Location</h2>
+          <div class="card-content" id="map"></div>
         </section>
       </section>
     </section>
@@ -197,6 +122,48 @@
         });
       });
     });
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark");
+  themeToggle.textContent = "☀️ Light Mode";
+  }
+
+  themeToggle.addEventListener("click", () => {
+  const darkModeIsOn = body.classList.toggle("dark");
+
+  if (darkModeIsOn) {
+    themeToggle.textContent = "☀️ Light Mode";
+    localStorage.setItem("theme", "dark");
+  } else {
+    themeToggle.textContent = "🌙 Dark Mode";
+    localStorage.setItem("theme", "light");
+  }
+});
+
+    window.initMap = function () {
+      const address = "Universitatea Transilvania, Brașov";
+      const geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 16,
+            center: results[0].geometry.location,
+          });
+
+          new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+          });
+        } else {
+          console.error("Geocode nu a reușit din cauza: " + status);
+        }
+      });
+    };
   </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoNA30iRkNZbOD78b1Gsft7b0BRS9xK_4&callback=initMap" async defer></script>
 </body>
 </html>

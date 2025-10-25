@@ -6,11 +6,6 @@
   box-sizing: border-box;
 }
 
-/*:root{
-  --primary-color: #DFD0B8;
-  --text-color: #948979;
-}
-*/
 
 html{
   font-size: 12px;
@@ -18,7 +13,7 @@ html{
 
 body{
   font-family: Orbitron, sans-serif;
-  background-color: black;
+   background-color: black; 
   /*color: #DFD0B8;*/
 }
 
@@ -39,11 +34,11 @@ body{
   display: grid;
   padding: 5rem;
   background: #393E46;
-  grid-template-columns: 1fr 1fr; /*???*/
+  grid-template-columns: 1fr 1fr; 
   gap: 4rem; 
 }
 
-@media only screen and (max-width: 768 px)
+@media only screen and (max-width: 768px)
 {
   .container {
     width: 100%;
@@ -54,7 +49,7 @@ body{
 }
 
 .profile{
-  grid-column: 1/-1; /*???*/
+  grid-column: 1/-1; 
   margin-bottom: 2rem;
 }
 
@@ -110,7 +105,7 @@ body{
 .title{
   color: #91C4C3;
   font-weight: 700;
-  font-size: 1.3rem; /*  2rem */
+  font-size: 1.3rem; 
   text-transform: uppercase;
 }
 
@@ -120,11 +115,17 @@ body{
   font-size: 1.2rem;
   margin-top: 1rem;
   color: #DFD0B8;
+  cursor: pointer;
 }
 
 .download_button:hover{
   color: #91C4C3;
+  transform: scale(1.05);
 }
+
+/* .download_button:active {
+  transform: scale(0.95); 
+} */
 
 /*@media only screen and (max-width: 768px){
   .profile_container{
@@ -239,3 +240,42 @@ hr{
   }
 }
 */
+
+/* harta*/
+#map {
+  width: 100%;
+  height: 300px;
+  width: 500px;
+  border-radius: 10px;
+  border: 2px solid #3498db;
+  transition: box-shadow 0.2s;
+  margin-top: 3rem;
+}
+
+#map:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 850px) {
+  .mapCard {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  #map {
+    height: 200px;
+  }
+}
+
+.link{
+  color: #948979;
+  text-decoration: underline;
+}
+
+.link:hover {
+ color: #91C4C3;
+}
+
+
+
+

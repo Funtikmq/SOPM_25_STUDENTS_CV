@@ -6,9 +6,19 @@
   <title>Curriculum Vitae</title>
   <link rel="stylesheet" href="../styles/e.css">
    <script src="https://unpkg.com/feather-icons"></script>
+   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxrgLIAq0sPf9jvmesPXgaX9ttdE2aXI4&callback=initMap" async defer></script> -->
 </head>
+
+
+
+
 <body>
-   <div class="container">
+
+
+
+
+
+  <div class="container">
 
     <div class="profile">
       <div class="profile_container">
@@ -21,14 +31,20 @@
           <p class="personal_profile description">
             Fourth-year Electrical Engineering and Computer Science student, specializing in Electronics, Telecommunications, and Information Technologies. Adaptable, motivated, and eager to apply technical skills to innovative projects and collaborative environments.
           </p>
-          <a class="download_button">Download CV</a> 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-            <script>
-            document.getElementById("download").addEventListener("click", () => {
-            const element = document.body; // sau un div anume
-             html2pdf().from(element).save("CV.pdf");
-             });
-            </script>
+          <a id="download" class="download_button">Download CV</a>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+          <script>
+           document.getElementById("download").addEventListener("click", () => {
+
+          const element = document.body; // sau document.getElementById("cv-section")
+
+            html2pdf()
+          .from(element)
+          .save("CV.pdf");
+          });
+          </script>
+
 
         </div>
       </div>
@@ -36,7 +52,7 @@
 
     <div class="section_1">
 
-      <!-- 
+      <!--
       <div class="personal_info">
         <h3 class="title">Personal Information</h3>
         <ul class="info_list description">
@@ -44,7 +60,7 @@
           <li>Email: atitienei.eliza@outlook.com</li>
           <li>Location: Brașov, Romania</li>
         </ul>
-      </div> 
+      </div>
       -->
 
       <div class="education">
@@ -66,7 +82,10 @@
           <div class="experience_item">
             <p class="item_pretitle">may 2025 - jul 2025</p>
             <h4 class="item_title">Practical Training</h4>
-            <p class="item_subtitle">Mitel Networks Romania</p>
+            <p class="item_subtitle">
+              <a href="../pdf/certificat_practica.pdf" target="_blank" class="link">Mitel Networks Romania</a>
+            </p>
+
             <p class="description">
               Gained hands-on exposure to telecommunications systems and company workflows.
               Assisted in understanding and applying concepts in networking and communication technologies.
@@ -83,9 +102,9 @@
           <li>Hardware & Embedded Systems: Arduino, Verilog, vDosPlus</li>
           <li>Other: HTML & CSS, Microsoft Office</li>
         </ul>
-      </div> 
+      </div>
     </div>
-    
+
     <div class="section_2">
 
       <div class="projects">
@@ -100,16 +119,19 @@
           <li>Hotel Reservation Management System in PHP, MySQL</li>
           <LI>Radio Mobile Network Design Project</LI>
         </ul>
-      </div> 
+      </div>
 
       <div class="languages">
         <h3 class="title">Languages</h3>
         <ul class="language_list description">
-          <li>English (C1 - Cambridge Certification)</li>
+          <li>
+            <a href="../pdf/cambridge.pdf" target="_blank" class="link">English (C1 - Cambridge Certification)</a>
+          </li>
+          <li>Romanian (native)</li>
           <li>French (A2)</li>
           <li>German (A1)</li>
         </ul>
-      </div> 
+      </div>
 
       <div class="interests">
         <h3 class="title">Interests</h3>
@@ -132,29 +154,32 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <hr>
+
 
     <div class="section_3">
 
       <div class="contact">
         <h3 class="title">Contact</h3>
         <div class="contact_info">
-          <p class="description">Location: Brașov, Romania</p>
+          <p class="description">Location: Brasov, Romania</p>
           <p class="description">Email: atitienei.eliza@outlook.com</p>
           <p class="description">Phone: 00 40 (735) 281 614</p>
         </div>
+        <div class="harta" id="map"></div>
       </div>
 
       <div class="socials">
         <h3 class="title">Socials</h3>
         <div class="social_items">
-          <a href="#" class="social_item">
+          <a href="https://github.com/el4T" class="social_item">
             <i data-feather="github"></i>
             <span>GitHub</span>
           </a>
-          <a href="#" class="social_item">
+          <a href="https://www.linkedin.com/in/e-atitienei-994991394/" class="social_item">
             <i data-feather="linkedin"></i>
             <span>LinkedIn</span>
           </a>
@@ -162,11 +187,41 @@
         </div>
       </div>
 
-   </div>
-   
+  </div>
+
    <script>
       feather.replace();
+
+       window.initMap = function () {
+    const address = "Universitatea Transilvania, Brașov";
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 16,
+          center: results[0].geometry.location,
+        });
+
+        new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location,
+        });
+      } else {
+        console.error("Geocode nu a reușit din cauza: " + status);
+      }
+    });
+  };
     </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxrgLIAq0sPf9jvmesPXgaX9ttdE2aXI4&callback=initMap" async defer></script>
+
+
+
+<!-- js toggle la click -->
+
+
+
 
 </body>
 </html>
