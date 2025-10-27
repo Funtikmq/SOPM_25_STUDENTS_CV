@@ -1,159 +1,159 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
 body {
-    background: linear-gradient(135deg, #282ea8 0%, #e7e3fd 100%);
-    color: #222;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 a {
-    text-decoration: none;
-    color: #0a74da;
+  text-decoration: none;
+  color: #0a74da;
 }
 .mainContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
 }
 .innerContainer {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h1 {
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-    color: #003c6e;
-    margin-bottom: 3rem;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  color: #003c6e;
+  margin-bottom: 3rem;
 } /* Slider container */
 .sliderContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .cardsContainer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    overflow: visible; /* Schimbat din hidden în visible */
-    gap: 2rem;
-    padding: 1rem;
-} /* Ascundem toate cardurile implicit */
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  overflow: visible;
+  gap: 2rem;
+  padding: 1rem;
+}
 .card {
-    display: none;
-    width: 280px;
-    height: 340px;
-    background: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15px);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    flex-direction: column;
-    flex-shrink: 0; /* Previne comprimarea cardurilor */
+  display: none;
+  width: 280px;
+  height: 340px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  flex-direction: column;
+  flex-shrink: 0; /* Previne comprimarea cardurilor */
 } /* Card activ vizibil */
 .card.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    z-index: 10; /* Asigură că cardul transformat este deasupra */
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10; /* Asigură că cardul transformat este deasupra */
 }
 .cardImg {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    overflow: hidden;
-    display: block;
-    margin: auto;
-    transition: transform 0.4s ease;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+  transition: transform 0.4s ease;
 }
 .cardImg:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 .cardTitle {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    color: #0a2540;
-    text-transform: capitalize;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  color: #0a2540;
+  text-transform: capitalize;
 } /* Arrows - poziționare îmbunătățită */
 .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 30px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 20; /* Asigură că butoanele sunt deasupra */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 20; /* Asigură că butoanele sunt deasupra */
 }
 .arrow:hover {
-    background: rgba(0, 0, 0, 0.7);
-    transform: translateY(-50%) scale(1.1);
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
 }
 .arrow-left {
-    left: -70px; /* Mutat mai în afara containerului */
+  left: 120px;
 }
 .arrow-right {
-    right: -70px; /* Mutat mai în afara containerului */
+  right: 120px;
 } /* Pentru ecrane mai mici */
 @media (max-width: 768px) {
-    .sliderContainer {
-        max-width: 100%;
-    }
-    .arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-    }
-    .arrow-left {
-        left: -50px;
-    }
-    .arrow-right {
-        right: -50px;
-    }
-    .card {
-        width: 250px;
-        height: 320px;
-    }
-    .cardImg {
-        width: 220px;
-        height: 220px;
-    }
+  .sliderContainer {
+    max-width: 100%;
+  }
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  .arrow-left {
+    left: -50px;
+  }
+  .arrow-right {
+    right: -50px;
+  }
+  .card {
+    width: 250px;
+    height: 320px;
+  }
+  .cardImg {
+    width: 220px;
+    height: 220px;
+  }
 }

@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>UnitBV Students</title>
-        <link rel="stylesheet" href="../styles/styles.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <div class="mainContainer">
-            <div class="innerContainer">
-                <h1>UNITBV Students</h1>
-                <div class="sliderContainer">
-                    <button class="arrow arrow-left">&#8592;</button>
-                    <div class="cardsContainer">
-                        <a href="veaceslav.html" class="card active">
-                            <img
-                                class="cardImg"
-                                src="../img/veaceslav.jpg"
-                                alt="Primul student"
-                            />
-                            <h3 class="cardTitle">Bobeica Veaceslav</h3>
-                        </a>
-                        <a href="e.html" class="card">
-                            <img
-                                class="cardImg"
-                                src="../img/e2.png"
-                                alt="Al doilea student"
-                            />
-                            <h3 class="cardTitle">Atitienei Eliza</h3>
-                        </a>
-                        <a href="bogdan.html" class="card">
-                            <img
-                                class="cardImg"
-                                src="../img/f1.jpg"
-                                alt="Al treilea student"
-                            />
-                            <h3 class="cardTitle">Andrieș Bogdan</h3>
-                        </a>
-                    </div>
-                    <button class="arrow arrow-right">&#8594;</button>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UnitBV Students</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="innerContainer">
+        <h1>UNITBV STUDENTS</h1>
+        <div class="sliderContainer">
+          <button class="arrow arrow-left">&#8592;</button>
+          <div class="cardsContainer">
+            <a href="veaceslav.html" class="card active">
+              <img
+                class="cardImg"
+                src="../img/veaceslav.jpg"
+                alt="Primul student"
+              />
+              <h3 class="cardTitle">Bobeica Veaceslav</h3>
+            </a>
+            <a href="e.html" class="card">
+              <img
+                class="cardImg"
+                src="../img/e2.png"
+                alt="Al doilea student"
+              />
+              <h3 class="cardTitle">Atitienei Eliza</h3>
+            </a>
+            <a href="bogdan.html" class="card">
+              <img
+                class="cardImg"
+                src="../img/f1.jpg"
+                alt="Al treilea student"
+              />
+              <h3 class="cardTitle">Andrieș Bogdan</h3>
+            </a>
+          </div>
+          <button class="arrow arrow-right">&#8594;</button>
         </div>
-        <script src="../scripts/slider.js"></script>
-    </body>
+      </div>
+    </div>
+    <script src="../scripts/slider.js"></script>
+  </body>
 </html>
 <script>
-    const cards = document.querySelectorAll(".card");  
-    const prevBtn = document.querySelector(".arrow-left");  
-    const nextBtn = document.querySelector(".arrow-right");  
-    let current = 0;  
-    function showCard(index) 
-    {    cards.forEach((card, i) => {      card.classList.toggle("active", i === index);    });
-      }  prevBtn.addEventListener("click", () => {    
-          current = (current - 1 + cards.length) % cards.length;
-          showCard(current);  });  nextBtn.addEventListener("click", () => {    
-          current = (current + 1) % cards.length;
-          showCard(current);  });  
-          
-          //schimbare culoare background 
-          
-          const body = document.body;
-          const bgColors = [    
-            "linear-gradient(135deg, #282ea8 0%, #e7e3fd 100%)",    
-            "linear-gradient(135deg, #43cea2 0%, #185a9d 100%)",    
-            "linear-gradient(135deg, #2c3e50 0%, #34495e 100%)"  ];
-          function showCard(index) {
-            cards.forEach((card, i) => {      
-              card.classList.toggle("active", i === index);    });
-                  body.style.transition = "background 0.6s ease";
-                      body.style.background = bgColors[index];  }
-                        prevBtn.addEventListener("click", () => {
-                              current = (current - 1 + cards.length) % cards.length;    showCard(current);  });
-                                nextBtn.addEventListener("click", () => {    current = (current + 1) % cards.length;
-                                    showCard(current);  });
+  const cards = document.querySelectorAll(".card");
+  const prevBtn = document.querySelector(".arrow-left");
+  const nextBtn = document.querySelector(".arrow-right");
+  let current = 0;
+  function showCard(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle("active", i === index);
+    });
+  }
+  prevBtn.addEventListener("click", () => {
+    current = (current - 1 + cards.length) % cards.length;
+    showCard(current);
+  });
+  nextBtn.addEventListener("click", () => {
+    current = (current + 1) % cards.length;
+    showCard(current);
+  });
+
+  //schimbare culoare background
+
+  const body = document.body;
+  const bgColors = [
+    "linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)",
+    "linear-gradient(135deg, #43cea2 0%, #185a9d 100%)",
+    "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
+    ,
+  ];
+  function showCard(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle("active", i === index);
+    });
+    body.style.transition = "background 0.6s ease";
+    body.style.background = bgColors[index];
+  }
+  prevBtn.addEventListener("click", () => {
+    current = (current - 1 + cards.length) % cards.length;
+    showCard(current);
+  });
+  nextBtn.addEventListener("click", () => {
+    current = (current + 1) % cards.length;
+    showCard(current);
+  });
 </script>
 <!-- animatie scris -->
 <script>
-    const title = document.querySelector("h1");  const text = "UNITBV Students";  title.textContent = ""; // golește textul inițial  
-    let i = 0;  
-    function typeEffect() {    
-      if (i < text.length) {      
-        title.textContent += text.charAt(i);
-              i++;      
-              setTimeout(typeEffect, 150); // viteza scrisului (100ms per literă)
-                  }  }  typeEffect();
+  const title = document.querySelector("h1");
+  const text = "UNITBV STUDENTS";
+  title.textContent = ""; // golește textul inițial
+  let i = 0;
+  function typeEffect() {
+    if (i < text.length) {
+      title.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeEffect, 50);
+    }
+  }
+  typeEffect();
 </script>
