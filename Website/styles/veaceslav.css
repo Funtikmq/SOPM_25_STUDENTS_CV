@@ -81,7 +81,7 @@ a {
 }
 
 .contactText {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   word-break: break-all;
 }
 
@@ -298,12 +298,6 @@ a {
 
 .contactIcon:hover {
   background-color: #1d6ed9;
-}
-
-.contactText {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #fff;
 }
 
 /* ====== Harta ====== */

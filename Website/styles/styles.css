@@ -1,11 +1,12 @@
+/* RESET & BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
 }
 body {
   background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: #222;
   min-height: 100vh;
   display: flex;
@@ -16,6 +17,8 @@ a {
   text-decoration: none;
   color: #0a74da;
 }
+
+/* MAIN LAYOUT */
 .mainContainer {
   display: flex;
   justify-content: center;
@@ -31,61 +34,73 @@ a {
   flex-direction: column;
   align-items: center;
 }
-h1 {
+.mainTitle {
   font-size: 2.5rem;
   letter-spacing: 1px;
-  color: #003c6e;
+  color: #fff;
   margin-bottom: 3rem;
-} /* Slider container */
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* SLIDER */
 .sliderContainer {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55%;
-  max-width: 900px;
+  width: 400px; /* dimensiune fixa pentru slider */
+  height: 380px;
   margin: 0 auto;
+  overflow: hidden;
 }
+
 .cardsContainer {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  overflow: visible;
-  gap: 2rem;
-  padding: 1rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+/* CARD */
 .card {
-  display: none;
-  width: 280px;
-  height: 340px;
+  padding-top: 20px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);
   overflow: hidden;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
-  flex-direction: column;
-  flex-shrink: 0; /* Previne comprimarea cardurilor */
-} /* Card activ vizibil */
-.card.active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.6s ease;
+  text-decoration: none;
+  color: inherit;
+  z-index: 10;
+}
+.card.active {
+  left: 0;
+  opacity: 1;
+  transform: translateX(0);
 }
 .card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  z-index: 10; /* Asigură că cardul transformat este deasupra */
+  z-index: 10;
 }
 .cardImg {
   width: 250px;
   height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  overflow: hidden;
   display: block;
   margin: auto;
   transition: transform 0.4s ease;
@@ -103,50 +118,55 @@ h1 {
   letter-spacing: 0.5px;
   color: #0a2540;
   text-transform: capitalize;
-} /* Arrows - poziționare îmbunătățită */
+}
+
+/* ARROWS */
 .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 30px;
   background: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: #fff;
   border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 50%;
   width: 50px;
-  height: 50px;
+  height: 80%;
+  border-radius: 10px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 20; /* Asigură că butoanele sunt deasupra */
 }
 .arrow:hover {
-  background: rgba(0, 0, 0, 0.7);
-  transform: translateY(-50%) scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
 }
-.arrow-left {
-  left: 120px;
+
+/* TEXT BOX */
+.textContainer {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 2rem;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #000;
+  background-color: #ffffffca;
+  border-radius: 20px;
+  width: 55%;
+  min-height: 7rem;
+  display: block;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.arrow-right {
-  right: 120px;
-} /* Pentru ecrane mai mici */
-@media (max-width: 768px) {
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
   .sliderContainer {
-    max-width: 100%;
+    width: 80%;
   }
-  .arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
+  .textContainer {
+    width: 80%;
   }
-  .arrow-left {
-    left: -50px;
-  }
-  .arrow-right {
-    right: -50px;
+}
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
   }
   .card {
     width: 250px;
@@ -156,4 +176,45 @@ h1 {
     width: 220px;
     height: 220px;
   }
+  .arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 1.5rem;
+  }
+  .card {
+    width: 220px;
+    height: 300px;
+  }
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+  .textContainer {
+    font-size: 0.9rem;
+    padding: 1.5rem;
+  }
+}
+
+/* === ANIMATIE GLISARE CARDURI === */
+.card.slide-out-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.card.slide-in-right {
+  transform: translateX(0);
+  opacity: 1;
+}
+.card.slide-out-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.card.slide-in-left {
+  transform: translateX(0);
+  opacity: 1;
 }
