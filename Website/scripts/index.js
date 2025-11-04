@@ -29,7 +29,7 @@ function showCard(index, direction = "right") {
     )
   );
 
-  // animatie iesire in functie de directie
+  // animatie iesire
   if (direction === "right") currentCard.classList.add("slide-out-left");
   else currentCard.classList.add("slide-out-right");
 
@@ -43,7 +43,7 @@ function showCard(index, direction = "right") {
     );
   }, 50);
 
-  // schimbare background optionala
+  // schimbare background
   if (bgColors[index]) body.style.background = bgColors[index];
 
   current = index;
@@ -60,7 +60,7 @@ nextBtn.addEventListener("click", () => {
   showCard(newIndex, "right");
 });
 
-// OPTIONAL: animatie tipare scris titlu
+//animatie tipare scris titlu
 const title = document.querySelector(".mainTitle");
 const text = "UNITBV STUDENTS";
 title.textContent = "";

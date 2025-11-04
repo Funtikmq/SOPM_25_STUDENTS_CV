@@ -22,7 +22,7 @@ window.initMap = function () {
         position: results[0].geometry.location,
       });
     } else {
-      console.error("Geocode nu a reușit din cauza: " + status);
+      console.error("eroare GeoCode: " + status);
     }
   });
 };

@@ -192,7 +192,7 @@ a {
 .sectionContent {
   display: none;
   padding: 1rem 1.5rem;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.2s ease;
 }
 
 .sectionContent.show {
